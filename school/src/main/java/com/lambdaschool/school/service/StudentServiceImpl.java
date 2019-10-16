@@ -64,7 +64,6 @@ public class StudentServiceImpl implements StudentService
         for(Course c : student.getCourses()){
             courses.add(c);
         }
-
         newStudent.setCourses(courses);
 
         return studrepos.save(newStudent);

@@ -51,21 +51,16 @@ public class StudentController
     }
 
 
-    @PostMapping(value = "/Student",
+    @PostMapping(value = "/student",
                  consumes = {"application/json"},
                  produces = {"application/json"})
     public ResponseEntity<?> addNewStudent(@Valid
                                            @RequestBody
                                                    Student newStudent) throws URISyntaxException
     {
-        newStudent = studentService.save(newStudent);
 
-        // set the location header for the newly created resource
-        HttpHeaders responseHeaders = new HttpHeaders();
-        URI newStudentURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{Studentid}").buildAndExpand(newStudent.getStudid()).toUri();
-        responseHeaders.setLocation(newStudentURI);
 
-        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(studentService.save(newStudent), HttpStatus.CREATED);
     }
 
 
