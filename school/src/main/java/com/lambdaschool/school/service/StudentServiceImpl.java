@@ -60,6 +60,12 @@ public class StudentServiceImpl implements StudentService
 
         newStudent.setStudname(student.getStudname());
 
+        ArrayList<Course> courses = new ArrayList<>();
+        for(Course c : student.getCourses()){
+            courses.add(c);
+        }
+        newStudent.setCourses(courses);
+
         return studrepos.save(newStudent);
     }
 
